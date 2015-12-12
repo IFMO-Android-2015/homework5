@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/vorona/AndroidStudioProjects/homework5/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="/Users/vorona/AndroidStudioProjects/homework5/app/build/intermediates/pre-dexed/debug/classes-54b8d1fd711ea085e10f00f97d042d1f59c4c9a0.jar" />
+    </item>
+    <item
+        jar="/Users/vorona/AndroidStudioProjects/homework5/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="/Users/vorona/AndroidStudioProjects/homework5/app/build/intermediates/pre-dexed/debug/classes-346e453f3a0343fdcdc620f66cb0825933904d10.jar" />
+    </item>
+    <item
+        jar="/Users/vorona/AndroidStudioProjects/homework5/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="/Users/vorona/AndroidStudioProjects/homework5/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1-b27c8b7f8e86d335beea484a72b6a067e2cd9f84.jar" />
+    </item>
+    <item
+        jar="/Users/vorona/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="/Users/vorona/AndroidStudioProjects/homework5/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1-8664db02740f84fa3cc627e4f4ec74b3bbbce6a7.jar" />
+    </item>
+
+</items>
