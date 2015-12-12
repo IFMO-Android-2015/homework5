@@ -18,6 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver android:name=".ProgressReceiver">
+            <intent-filter>
+                <action android:name="ACTION.DOWNLOAD_FILE"></action>
+            </intent-filter>
+        </receiver>
+        <service
+            android:name=".DownloadService"/>
     </application>
 
 </manifest>
