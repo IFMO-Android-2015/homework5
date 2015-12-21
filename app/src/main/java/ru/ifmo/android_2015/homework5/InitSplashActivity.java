@@ -78,9 +78,7 @@ public class InitSplashActivity extends Activity {
 
     static void downloadFile(Context context,
                              ProgressCallback progressCallback) throws IOException {
-        Log.e(TAG, "start downloading");
         File destFile = FileUtils.createTempExternalFile(context, "gz");
-        Log.e(TAG, "made file");
         DownloadUtils.downloadFile(CITIES_GZ_URL, destFile, progressCallback);
     }
 
