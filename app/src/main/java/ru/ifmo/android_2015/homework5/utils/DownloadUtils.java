@@ -1,4 +1,4 @@
-package ru.ifmo.android_2015.homework5;
+package ru.ifmo.android_2015.homework5.utils;
 
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -12,10 +12,12 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import ru.ifmo.android_2015.homework5.Constants;
+
 /**
  * Методы для скачивания файлов.
  */
-final class DownloadUtils {
+public final class DownloadUtils {
 
     /**
      * Выполняет сетевой запрос для скачивания файла, и сохраняет ответ в указанный файл.
@@ -28,7 +30,7 @@ final class DownloadUtils {
      *
      * @throws IOException  В случае ошибки выполнения сетевого запроса или записи файла.
      */
-    static void downloadFile(String downloadUrl,
+    public static void downloadFile(String downloadUrl,
                              File destFile,
                              @Nullable ProgressCallback progressCallback) throws IOException {
         Log.d(TAG, "Start downloading url: " + downloadUrl);
@@ -80,6 +82,11 @@ final class DownloadUtils {
 
                 if (contentLength > 0) {
                     int newProgress = 100 * receivedLength / contentLength;
+                    if (Constants.NEED_TO_FAIL) {
+                        if (newProgress >= Constants.FAIL_AFTER_X_PERCENTS) {
+                            throw new IOException("Failed after "+Constants.FAIL_AFTER_X_PERCENTS+"%");
+                        }
+                    }
                     if (newProgress > progress && progressCallback != null) {
                         Log.d(TAG, "Downloaded " + newProgress + "% of " + contentLength + " bytes");
                         progressCallback.onProgressChanged(newProgress);
@@ -114,7 +121,7 @@ final class DownloadUtils {
         }
     }
 
-    static void downloadFile(String downloadUrl, File destFile) throws IOException {
+    public static void downloadFile(String downloadUrl, File destFile) throws IOException {
         downloadFile(downloadUrl, destFile, null /*progressCallback*/);
     }
 

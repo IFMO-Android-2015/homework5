@@ -1,4 +1,4 @@
-package ru.ifmo.android_2015.homework5;
+package ru.ifmo.android_2015.homework5.utils;
 
 import android.content.Context;
 
@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * Методы для работы с файлами.
  */
-final class FileUtils {
+public final class FileUtils {
 
     /**
      * Создает временный пустой файл в папке приложения в External Storage
@@ -25,7 +25,7 @@ final class FileUtils {
      *
      * @throws IOException  в случае ошибки создания файла.
      */
-    static File createTempExternalFile(Context context, String extension) throws IOException {
+    public static File createTempExternalFile(Context context, String extension) throws IOException {
         File dir = new File(context.getExternalFilesDir(null), "tmp");
         if (dir.exists() && !dir.isDirectory()) {
             throw new IOException("Not a directory: " + dir);

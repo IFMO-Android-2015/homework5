@@ -1,4 +1,4 @@
-package ru.ifmo.android_2015.homework5;
+package ru.ifmo.android_2015.homework5.utils;
 
 /**
  * Callback интерфейс для получения уведомления о прогрессе.
