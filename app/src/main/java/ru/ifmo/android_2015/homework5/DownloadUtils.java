@@ -118,7 +118,7 @@ final class DownloadUtils {
         downloadFile(downloadUrl, destFile, null /*progressCallback*/);
     }
 
-    private static final String TAG = "Download";
+    private static final String TAG = "Init Download";
 
 
     private DownloadUtils() {}
