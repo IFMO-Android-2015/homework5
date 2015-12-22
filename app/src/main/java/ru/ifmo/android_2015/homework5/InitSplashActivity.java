@@ -82,15 +82,6 @@ public class InitSplashActivity extends Activity {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public Object onRetainNonConfigurationInstance() {
-        // Этот метод вызывается при смене конфигурации, когда текущий объект
-        // Activity уничтожается. Объект, который мы вернем, не будет уничтожен,
-        // и его можно будет использовать в новом объекте Activity
-        return receiver;
-    }
-
-    @Override
     public void onDestroy() {
         super.onDestroy();
         unregisterReceiver(receiver);
@@ -101,7 +92,6 @@ public class InitSplashActivity extends Activity {
         state.putSerializable(getString(R.string.downloadState), downloadState);
         state.putInt(getString(R.string.progress), progress);
         super.onSaveInstanceState(state);
-
     }
 
     /**
