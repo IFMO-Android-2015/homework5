@@ -3,4 +3,6 @@
     <string name="downloading">Загрузка&#8230;</string>
     <string name="error">Ошибка</string>
     <string name="done">Готово</string>
+    <string name="progress">progress</string>
+    <string name="downloadState">downloadState</string>
 </resources>
