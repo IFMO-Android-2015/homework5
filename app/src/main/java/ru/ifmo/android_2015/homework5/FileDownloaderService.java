@@ -10,7 +10,7 @@ public class FileDownloaderService extends IntentService {
     public FileDownloaderService() {
         super("FileDownloaderService");
     }
-
+    public static final String TAG = "File Downloader Service";
     @Override
     public void onDestroy() {
         super.onDestroy();
