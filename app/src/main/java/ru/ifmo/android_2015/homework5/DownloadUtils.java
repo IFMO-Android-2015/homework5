@@ -1,5 +1,7 @@
 package ru.ifmo.android_2015.homework5;
 
+import android.app.Service;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
@@ -16,21 +18,16 @@ import java.net.URL;
  * Методы для скачивания файлов.
  */
 final class DownloadUtils {
-
     /**
      * Выполняет сетевой запрос для скачивания файла, и сохраняет ответ в указанный файл.
      *
      * @param downloadUrl   URL - откуда скачивать (http:// или https://)
      * @param destFile      файл, в который сохранять.
-     * @param progressCallback  опциональный callback для уведомления о прогрессе скачивания
-     *                          файлы. Его метод onProgressChanged вызывается синхронно
-     *                          в текущем потоке.
+     * @param service       сервис, вызвавший метод
      *
      * @throws IOException  В случае ошибки выполнения сетевого запроса или записи файла.
      */
-    static void downloadFile(String downloadUrl,
-                             File destFile,
-                             @Nullable ProgressCallback progressCallback) throws IOException {
+    static void downloadFile(String downloadUrl, File destFile, Service service) throws IOException {
         Log.d(TAG, "Start downloading url: " + downloadUrl);
         Log.d(TAG, "Saving to file: " + destFile);
 
@@ -80,18 +77,26 @@ final class DownloadUtils {
 
                 if (contentLength > 0) {
                     int newProgress = 100 * receivedLength / contentLength;
-                    if (newProgress > progress && progressCallback != null) {
-                        Log.d(TAG, "Downloaded " + newProgress + "% of " + contentLength + " bytes");
-                        progressCallback.onProgressChanged(newProgress);
-                    }
                     progress = newProgress;
+                    Intent intent = new Intent(DownloadStateReceiver.ACTION);
+                    intent.putExtra(DownloadStateReceiver.percentage, progress);
+                    intent.putExtra(DownloadStateReceiver.state, DownloadState.DOWNLOADING.toString());
+                    service.sendBroadcast(intent);
                 }
             }
 
             if (receivedLength != contentLength) {
                 Log.w(TAG, "Received " + receivedLength + " bytes, but expected " + contentLength);
+                Intent intent = new Intent(DownloadStateReceiver.ACTION);
+                intent.putExtra(DownloadStateReceiver.percentage, 0);
+                intent.putExtra(DownloadStateReceiver.state, DownloadState.ERROR.toString());
+                service.sendBroadcast(intent);
             } else {
                 Log.d(TAG, "Received " + receivedLength + " bytes");
+                Intent intent = new Intent(DownloadStateReceiver.ACTION);
+                intent.putExtra(DownloadStateReceiver.percentage, InitSplashActivity.maxProgress);
+                intent.putExtra(DownloadStateReceiver.state, DownloadState.DONE.toString());
+                service.sendBroadcast(intent);
             }
 
         } finally {
@@ -114,12 +119,9 @@ final class DownloadUtils {
         }
     }
 
-    static void downloadFile(String downloadUrl, File destFile) throws IOException {
-        downloadFile(downloadUrl, destFile, null /*progressCallback*/);
-    }
 
     private static final String TAG = "Download";
-
+    private static final DownloadStateReceiver receiver = new DownloadStateReceiver();
 
     private DownloadUtils() {}
 }
