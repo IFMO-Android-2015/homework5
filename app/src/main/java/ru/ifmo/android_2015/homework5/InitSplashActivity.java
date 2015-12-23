@@ -1,9 +1,15 @@
 package ru.ifmo.android_2015.homework5;
 
 import android.app.Activity;
+import android.app.Service;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -20,15 +26,17 @@ public class InitSplashActivity extends Activity {
 
     // Урл для скачивания файла с данными, нужными для инициализации приложения при первом запуске.
     // GZIP-архив, содержащий список городов в формате JSON.
-    private static final String CITIES_GZ_URL =
+    protected static final String CITIES_GZ_URL =
             "https://www.dropbox.com/s/d99ky6aac6upc73/city_array.json.gz?dl=1";
-
+    protected static final String STATE = "STATE", PROGRESS = "PROGRESS",
+            BROADCAST_ACTION = "ru.ifmo.android_2015.homework5.BROADCAST_ACTION", SAVED_STATE = "SAVED_STATE";
+    protected static final int FINISHED_STATE = 0, DOWNLOADING_STATE = 1, ERROR_STATE = -1, MAX_PROGRESS = 100;
     // Индикатор прогресса
     private ProgressBar progressBarView;
     // Заголовок
     private TextView titleTextView;
-    // Выполняющийся таск загрузки файла
-    private DownloadFileTask downloadTask;
+
+    private BroadcastReceiver receiver;
 
     @Override
     @SuppressWarnings("deprecation")
@@ -40,34 +48,37 @@ public class InitSplashActivity extends Activity {
         titleTextView = (TextView) findViewById(R.id.title_text);
         progressBarView = (ProgressBar) findViewById(R.id.progress_bar);
 
-        progressBarView.setMax(100);
+        progressBarView.setMax(MAX_PROGRESS);
 
-        if (savedInstanceState != null) {
-            // Пытаемся получить ранее запущенный таск
-            downloadTask = (DownloadFileTask) getLastNonConfigurationInstance();
-        }
-        if (downloadTask == null) {
-            // Создаем новый таск, только если не было ранее запущенного таска
-            downloadTask = new DownloadFileTask(this);
-            downloadTask.execute();
-        } else {
-            // Передаем в ранее запущенный таск текущий объект Activity
-            downloadTask.attachActivity(this);
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                DownloadState state = DownloadState.ERROR;
+                int param = intent.getIntExtra(STATE, 0);
+                int progress = intent.getIntExtra(PROGRESS, 0);
+                System.out.println("#" + param);
+                switch (param) {
+                    case FINISHED_STATE:
+                        state = DownloadState.DONE;
+                        break;
+                    case DOWNLOADING_STATE:
+                        state = DownloadState.DOWNLOADING;
+                        break;
+                }
+                titleTextView.setText(state.titleResId);
+                progressBarView.setProgress(progress);
+            }
+        };
+
+        IntentFilter filter = new IntentFilter(BROADCAST_ACTION);
+        registerReceiver(receiver, filter);
+
+        if (savedInstanceState == null) {
+            final Intent service = new Intent(this, DownloadService.class);
+            startService(service);
         }
     }
 
-    @Override
-    @SuppressWarnings("deprecation")
-    public Object onRetainNonConfigurationInstance() {
-        // Этот метод вызывается при смене конфигурации, когда текущий объект
-        // Activity уничтожается. Объект, который мы вернем, не будет уничтожен,
-        // и его можно будет использовать в новом объекте Activity
-        return downloadTask;
-    }
-
-    /**
-     * Состояние загрузки в DownloadFileTask
-     */
     enum DownloadState {
         DOWNLOADING(R.string.downloading),
         DONE(R.string.done),
@@ -81,110 +92,24 @@ public class InitSplashActivity extends Activity {
         }
     }
 
-    /**
-     * Таск, выполняющий скачивание файла в фоновом потоке.
-     */
-    static class DownloadFileTask extends AsyncTask<Void, Integer, DownloadState>
-            implements ProgressCallback {
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString(SAVED_STATE, titleTextView.getText().toString());
+        super.onSaveInstanceState(outState);
+    }
 
-        // Context приложения (Не Activity!) для доступа к файлам
-        private Context appContext;
-        // Текущий объект Activity, храним для обновления отображения
-        private InitSplashActivity activity;
-
-        // Текущее состояние загрузки
-        private DownloadState state = DownloadState.DOWNLOADING;
-        // Прогресс загрузки от 0 до 100
-        private int progress;
-
-        DownloadFileTask(InitSplashActivity activity) {
-            this.appContext = activity.getApplicationContext();
-            this.activity = activity;
-        }
-
-        /**
-         * Этот метод вызывается, когда новый объект Activity подключается к
-         * данному таску после смены конфигурации.
-         *
-         * @param activity новый объект Activity
-         */
-        void attachActivity(InitSplashActivity activity) {
-            this.activity = activity;
-            updateView();
-        }
-
-        /**
-         * Вызываем на UI потоке для обновления отображения прогресса и
-         * состояния в текущей активности.
-         */
-        void updateView() {
-            if (activity != null) {
-                activity.titleTextView.setText(state.titleResId);
-                activity.progressBarView.setProgress(progress);
-            }
-        }
-
-        /**
-         * Вызывается в UI потоке из execute() до начала выполнения таска.
-         */
-        @Override
-        protected void onPreExecute() {
-            updateView();
-        }
-
-        /**
-         * Скачивание файла в фоновом потоке. Возвращает результат:
-         *      0 -- если файл успешно скачался
-         *      1 -- если произошла ошибка
-         */
-        @Override
-        protected DownloadState doInBackground(Void... ignore) {
-            try {
-                downloadFile(appContext, this /*progressCallback*/);
-                state = DownloadState.DONE;
-
-            } catch (Exception e) {
-                Log.e(TAG, "Error downloading file: " + e, e);
-                state = DownloadState.ERROR;
-            }
-            return state;
-        }
-
-        // Метод ProgressCallback, вызывается в фоновом потоке из downloadFile
-        @Override
-        public void onProgressChanged(int progress) {
-            publishProgress(progress);
-        }
-
-        // Метод AsyncTask, вызывается в UI потоке в результате вызова publishProgress
-        @Override
-        protected void onProgressUpdate(Integer... values) {
-            if (values.length > 0) {
-                int progress = values[values.length - 1];
-                this.progress = progress;
-                updateView();
-            }
-        }
-
-        @Override
-        protected void onPostExecute(DownloadState state) {
-            // Проверяем код, который вернул doInBackground и показываем текст в зависимости
-            // от результата
-            this.state = state;
-            if (state == DownloadState.DONE) {
-                progress = 100;
-            }
-            updateView();
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if (savedInstanceState != null) {
+            titleTextView.setText(savedInstanceState.getString(SAVED_STATE));
         }
     }
 
-    /**
-     * Скачивает список городов во временный файл.
-     */
-    static void downloadFile(Context context,
-                             ProgressCallback progressCallback) throws IOException {
-        File destFile = FileUtils.createTempExternalFile(context, "gz");
-        DownloadUtils.downloadFile(CITIES_GZ_URL, destFile, progressCallback);
+    @Override
+    public void onDestroy() {
+        unregisterReceiver(receiver);
+        super.onDestroy();
     }
 
     private static final String TAG = "InitSplash";
