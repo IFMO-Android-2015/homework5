@@ -5,8 +5,8 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "ru.ifmo.android_2015.homework_5"
-        minSdkVersion 14
+        applicationId "tk.bioryajenka.homework5"
+        minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
