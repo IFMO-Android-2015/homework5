@@ -33,12 +33,6 @@ public class DownloadService extends Service implements ProgressCallback {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(TAG, "onStartCommand");
-        if (intent != null) {
-            Log.d(TAG, "start again?");
-            startForeground(1, new Notification.Builder(this).
-                    setContentTitle("Sure want to stop downloading?!").
-                    setSmallIcon(R.mipmap.ic_launcher).build());
-        }
 
         if (thread == null) {
             Log.d(TAG, "starting thread");
