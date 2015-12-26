@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="D:\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.1\support-annotations-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="C:\Users\User\Downloads\homework5-master (1)\homework5-master\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.1-c03c280dd21af7abff05a00ee344f58262eaf55a.jar" />
+    </item>
+    <item
+        jar="C:\Users\User\Downloads\homework5-master (1)\homework5-master\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\libs\internal_impl-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="C:\Users\User\Downloads\homework5-master (1)\homework5-master\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.1-a1c8bf2a048c3315d888426b317ab399e8613461.jar" />
+    </item>
+    <item
+        jar="C:\Users\User\Downloads\homework5-master (1)\homework5-master\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="C:\Users\User\Downloads\homework5-master (1)\homework5-master\app\build\intermediates\pre-dexed\debug\classes-ccc57a6de51d28944de13fabc3609bfa3adefac0.jar" />
+    </item>
+    <item
+        jar="C:\Users\User\Downloads\homework5-master (1)\homework5-master\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="C:\Users\User\Downloads\homework5-master (1)\homework5-master\app\build\intermediates\pre-dexed\debug\classes-4a258e6cdde58b0d20c4d266d1ba2cccf01aa1f0.jar" />
+    </item>
+
+</items>
