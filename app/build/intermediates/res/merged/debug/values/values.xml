@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="http://schemas.android.com/tools">
-    <!-- From: file:/C:/prr/1/homework5/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
+    <!-- From: file:/C:/Users/User/Downloads/homework5-master%20(1)/homework5-master/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
@@ -41,10 +41,10 @@
     <color name="highlighted_text_material_light">#66009688</color>
     <color name="hint_foreground_material_dark">@color/bright_foreground_disabled_material_dark</color>
     <color name="hint_foreground_material_light">@color/bright_foreground_disabled_material_light</color>
-    <!-- From: file:/C:/prr/1/homework5/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/User/Downloads/homework5-master%20(1)/homework5-master/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="init_progress_bg">#88000000</color>
-    <!-- From: file:/C:/prr/1/homework5/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
+    <!-- From: file:/C:/Users/User/Downloads/homework5-master%20(1)/homework5-master/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <color name="material_blue_grey_800">#ff37474f</color>
     <color name="material_blue_grey_900">#ff263238</color>
@@ -207,24 +207,24 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
-    <!-- From: file:/C:/prr/1/homework5/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/User/Downloads/homework5-master%20(1)/homework5-master/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="app_name">Example 2.4</string>
     <string name="done">Готово</string>
     <string name="downloading">Загрузка…</string>
     <string name="error">Ошибка</string>
-    <!-- From: file:/C:/prr/1/homework5/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
+    <!-- From: file:/C:/Users/User/Downloads/homework5-master%20(1)/homework5-master/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <string name="status_bar_notification_info_overflow">999+</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
     <style name="Animation.AppCompat.DropDownUp" parent="Base.Animation.AppCompat.DropDownUp"/>
-    <!-- From: file:/C:/prr/1/homework5/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/User/Downloads/homework5-master%20(1)/homework5-master/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
     </style>
-    <!-- From: file:/C:/prr/1/homework5/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
+    <!-- From: file:/C:/Users/User/Downloads/homework5-master%20(1)/homework5-master/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <style name="Base.AlertDialog.AppCompat" parent="android:Widget">
         <item name="android:layout">@layout/abc_alert_dialog_material</item>
@@ -1237,14 +1237,14 @@
         <item name="android:dropDownItemStyle">@style/Widget.AppCompat.DropDownItem.Spinner</item>
     </style>
     <style name="Platform.Widget.AppCompat.Spinner" parent="android:Widget.Spinner"/>
-    <!-- From: file:/C:/prr/1/homework5/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/User/Downloads/homework5-master%20(1)/homework5-master/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="ProgressTitle">
         <item name="android:textColor">#fff</item>
         <item name="android:textSize">22sp</item>
         <item name="android:fontFamily" ns1:ignore="NewApi">sans-serif-medium</item>
     </style>
-    <!-- From: file:/C:/prr/1/homework5/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
+    <!-- From: file:/C:/Users/User/Downloads/homework5-master%20(1)/homework5-master/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <style name="RtlOverlay.DialogWindowTitle.AppCompat" parent="Base.DialogWindowTitle.AppCompat">
     </style>
