@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/ruslandavletshin/StudioProjects/homework5/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="/Users/ruslandavletshin/StudioProjects/homework5/app/build/intermediates/pre-dexed/debug/classes-419f108c34ab9a7a44750402b175cbda6f163afa.jar" />
+    </item>
+    <item
+        jar="/Users/ruslandavletshin/StudioProjects/homework5/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="/Users/ruslandavletshin/StudioProjects/homework5/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1-f673a4fee000b758c512a4065afeaeded745f4ce.jar" />
+    </item>
+    <item
+        jar="/Users/ruslandavletshin/StudioProjects/homework5/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="/Users/ruslandavletshin/StudioProjects/homework5/app/build/intermediates/pre-dexed/debug/classes-b1c39fc97cf989bd12f477fe5233e30ce9e4f499.jar" />
+    </item>
+    <item
+        jar="/Users/ruslandavletshin/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="/Users/ruslandavletshin/StudioProjects/homework5/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1-9368fe3dbff38eaa7ed79467a459473d1c650664.jar" />
+    </item>
+
+</items>
