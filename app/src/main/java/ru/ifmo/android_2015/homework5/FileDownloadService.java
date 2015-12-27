@@ -7,9 +7,7 @@ import android.util.Log;
 
 import java.io.IOException;
 
-/**
- * Created by ivan_pavlov on 06.12.15.
- */
+
 public class FileDownloadService extends IntentService {
 
     private static final String LOG_TAG = "FileDownloadService";
