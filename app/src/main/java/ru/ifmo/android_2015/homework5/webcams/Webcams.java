@@ -1,4 +1,4 @@
-package ru.ifmo.android_2015.citycam.webcams;
+package ru.ifmo.android_2015.homework5.webcams;
 
 import android.net.Uri;
 

@@ -1,4 +1,4 @@
-package ru.ifmo.android_2015.citycam.model;
+package ru.ifmo.android_2015.homework5.model;
 
 /**
  * Статический список крупных российских (+немного из СНГ) городов.

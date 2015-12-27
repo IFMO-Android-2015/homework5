@@ -1,4 +1,4 @@
-package ru.ifmo.android_2015.citycam.list;
+package ru.ifmo.android_2015.homework5.list;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import ru.ifmo.android_2015.citycam.R;
-import ru.ifmo.android_2015.citycam.model.City;
-import ru.ifmo.android_2015.citycam.model.LargeRussianCities;
+import ru.ifmo.android_2015.homework5.R;
+import ru.ifmo.android_2015.homework5.model.City;
+import ru.ifmo.android_2015.homework5.model.LargeRussianCities;
 
 /**
  * Адаптер для списка городов. Использует статичные данные из LargeRussianCities.

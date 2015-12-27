@@ -1,4 +1,4 @@
-package ru.ifmo.android_2015.citycam.model;
+package ru.ifmo.android_2015.homework5.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

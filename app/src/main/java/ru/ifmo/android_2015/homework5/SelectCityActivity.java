@@ -1,4 +1,4 @@
-package ru.ifmo.android_2015.citycam;
+package ru.ifmo.android_2015.homework5;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -8,10 +8,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import ru.ifmo.android_2015.citycam.list.CitiesRecyclerAdapter;
-import ru.ifmo.android_2015.citycam.list.CitySelectedListener;
-import ru.ifmo.android_2015.citycam.list.RecylcerDividersDecorator;
-import ru.ifmo.android_2015.citycam.model.City;
+import ru.ifmo.android_2015.homework5.list.CitiesRecyclerAdapter;
+import ru.ifmo.android_2015.homework5.list.CitySelectedListener;
+import ru.ifmo.android_2015.homework5.list.RecylcerDividersDecorator;
+import ru.ifmo.android_2015.homework5.model.City;
 
 public class SelectCityActivity extends AppCompatActivity
         implements CitySelectedListener {

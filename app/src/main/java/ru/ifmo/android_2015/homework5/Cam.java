@@ -1,12 +1,7 @@
-package ru.ifmo.android_2015.citycam;
+package ru.ifmo.android_2015.homework5;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import java.io.Serializable;
 
 /**
  * Created by Dan) on 08.11.2015.

@@ -1,4 +1,4 @@
-package ru.ifmo.android_2015.citycam.list;
+package ru.ifmo.android_2015.homework5.list;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
