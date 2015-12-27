@@ -6,7 +6,7 @@ import android.util.Log;
 
 public class DownloadFileService extends IntentService {
 
-    private static final String TAG = "DownloadService";
+    private static final String TAG = "DownloadFileService";
 
     public DownloadFileService() {
         super(TAG);
@@ -30,9 +30,9 @@ public class DownloadFileService extends IntentService {
     }
 
     private void sendProgress(InitSplashActivity.DownloadState downloadState, int progress) {
-        Log.d(TAG, "Download state " + downloadState + " progress " + progress);
-        Intent intent = new Intent("downloadservice");
-        intent.putExtra("state", downloadState);
+        Log.d(TAG, "Download state " + downloadState + " Progress " + progress);
+        Intent intent = new Intent("downloadfileservice");
+        intent.putExtra("downloadstate", downloadState);
         intent.putExtra("progress", progress);
         sendBroadcast(intent);
     }
