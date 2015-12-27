@@ -20,11 +20,12 @@ enum State {
 }
 
 public class DownloadService extends IntentService implements ProgressCallback {
-    public static final String ACTION_DOWNLOAD = "DOWNLOAD";
-    public static final String ACTION_BROADCAST = "BROADCAST";
-    public static final String EXTRA_PARAM_URL = "PARAM_URL";
-    public static final String EXTRA_PARAM_STATE = "PARAM_STATE";
-    public static final String EXTRA_PARAM_PROGRESS = "PARAM_PROGRESS";
+    public static final String ACTION_DOWNLOAD = "ru.ifmo.android_2015.homework5.action.DOWNLOAD";
+    public static final String ACTION_BROADCAST = "ru.ifmo.android_2015.homework5.action.BROADCAST";
+    
+    public static final String EXTRA_PARAM_URL = "ru.ifmo.android_2015.homework5.extra.PARAM_URL";
+    public static final String EXTRA_PARAM_STATE = "ru.ifmo.android_2015.homework5.extra.PARAM_STATE";
+    public static final String EXTRA_PARAM_PROGRESS = "ru.ifmo.android_2015.homework5.extra.PARAM_PROGRESS";
 
     private State state;
     private int progress;
