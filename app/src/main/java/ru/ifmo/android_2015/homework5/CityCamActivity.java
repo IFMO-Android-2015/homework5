@@ -3,6 +3,7 @@ package ru.ifmo.android_2015.homework5;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -56,14 +57,13 @@ public class CityCamActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(city.name);
 
         progressView.setVisibility(View.VISIBLE);
-
-
         // Здесь должен быть код, инициирующий асинхронную загрузку изображения с веб-камеры
         // в выбранном городе.
 
-        if (savedInstanceState != null) {
+        if (savedInstanceState == null) {
+            camImageView.setVisibility(View.INVISIBLE);
+            progressView.setVisibility(View.VISIBLE);
             startService(new Intent(this, DownloadService.class).putExtra("city", city));
-            camImg = savedInstanceState.getParcelable("img");
         }
 
         if (camImg != null) {
@@ -78,7 +78,6 @@ public class CityCamActivity extends AppCompatActivity {
                     case DownloadService.INFO:
                         textView.setText(intent.getStringExtra(DownloadService.DATA));
                         break;
-
                     case DownloadService.IMAGE:
                         progressView.setVisibility(View.INVISIBLE);
                         camImageView.setVisibility(View.VISIBLE);
@@ -92,8 +91,13 @@ public class CityCamActivity extends AppCompatActivity {
                 }
             }
         };
-    }
 
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(DownloadService.INFO);
+        intentFilter.addAction(DownloadService.IMAGE);
+        intentFilter.addAction(DownloadService.ERROR);
+        LocalBroadcastManager.getInstance(this).registerReceiver(receiver, intentFilter);
+    }
 
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
