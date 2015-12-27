@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\user\Documents\GitHub\homework5\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="C:\Users\user\Documents\GitHub\homework5\app\build\intermediates\pre-dexed\debug\classes-26929da4eb1712ccc334e5ae8723de55266b5041.jar" />
+    </item>
+    <item
+        jar="C:\Users\user\Documents\GitHub\homework5\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="C:\Users\user\Documents\GitHub\homework5\app\build\intermediates\pre-dexed\debug\classes-bc922d19eb20561e17e81211c5efddb7904aa4ef.jar" />
+    </item>
+    <item
+        jar="C:\Users\user\Documents\GitHub\homework5\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\libs\internal_impl-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="C:\Users\user\Documents\GitHub\homework5\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.1-2d88a39ddb8338e243d18ee95904c97208a05585.jar" />
+    </item>
+    <item
+        jar="C:\Users\user\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.1\support-annotations-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="C:\Users\user\Documents\GitHub\homework5\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.1-83676807229e344ee5d98b2e8f5ee90735dbc5c3.jar" />
+    </item>
+
+</items>
