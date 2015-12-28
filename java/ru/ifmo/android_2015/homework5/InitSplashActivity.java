@@ -46,18 +46,19 @@ public class InitSplashActivity extends Activity {
             Intent intent = new Intent(this, DownloadFileService.class);
             startService(intent);
         }
-        if (savedInstanceState == null || savedInstanceState.getSerializable("downloadstate") == DownloadState.DOWNLOADING)
-        broadcastReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                downloadState = (DownloadState) intent.getSerializableExtra("downloadstate");
-                updateView(downloadState, intent.getIntExtra("progress", 0));
-                if (intent.getSerializableExtra("downloadstate") != DownloadState.DOWNLOADING) {
-                    unregisterReceiver(broadcastReceiver);
+        if (savedInstanceState == null || savedInstanceState.getSerializable("downloadstate") == DownloadState.DOWNLOADING) {
+            broadcastReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    downloadState = (DownloadState) intent.getSerializableExtra("downloadstate");
+                    updateView(downloadState, intent.getIntExtra("progress", 0));
+                    if (intent.getSerializableExtra("downloadstate") != DownloadState.DOWNLOADING) {
+                        unregisterReceiver(broadcastReceiver);
+                    }
                 }
-            }
-        };
-        registerReceiver(broadcastReceiver, new IntentFilter("downloadfileservice"));
+            };
+            registerReceiver(broadcastReceiver, new IntentFilter("downloadfileservice"));
+        }
     }
 
     /**
