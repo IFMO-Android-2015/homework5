@@ -33,6 +33,7 @@ public class InitSplashActivity extends Activity {
     private TextView titleTextView;
     // Выполняющийся таск загрузки файла
 
+    public static DownloadIntentService downloadIntentService;
 
     public static InitSplashActivity activity;
 
@@ -42,6 +43,7 @@ public class InitSplashActivity extends Activity {
         Log.d(TAG, "onCreate");
         super.onCreate(savedInstanceState);
         activity = this;
+        Log.e("current activity: ", this.toString());
         setContentView(R.layout.activity_init_splash);
 
         titleTextView = (TextView) findViewById(R.id.title_text);
@@ -49,7 +51,12 @@ public class InitSplashActivity extends Activity {
 
         progressBarView.setMax(100);
 
-        startService(new Intent(getApplicationContext(), DownloadIntentService.class));
+        if(downloadIntentService == null) {
+            startService(new Intent(getApplicationContext(), DownloadIntentService.class));
+        } else {
+            Log.e("Download: ", "service already exists");
+            titleTextView.setText(downloadIntentService.state.titleResId);
+        }
 
     }
 
@@ -90,24 +97,36 @@ public class InitSplashActivity extends Activity {
                 class ProgressRunnable implements Runnable {
 
                     int progress;
+                    DownloadIntentService service;
 
-                    public ProgressRunnable(int progress) {
+                    public ProgressRunnable(int progress, DownloadIntentService service) {
                         this.progress = progress;
+                        this.service = service;
                     }
 
                     public void run() {
                         activity.progressBarView.setProgress(progress);
                         activity.titleTextView.setText(state.titleResId);
+                        InitSplashActivity.downloadIntentService = service;
+                        Log.e("writing progress to: ", activity.toString());
                     }
                 }
                 class MyProgressCallback implements ProgressCallback {
+
+                    DownloadIntentService service;
+
+                    public MyProgressCallback(DownloadIntentService service) {
+                        this.service = service;
+                    }
                     public void onProgressChanged(int progress) {
                         Handler handler = new Handler(Looper.getMainLooper());
-                        handler.post(new ProgressRunnable(progress));
+                        handler.post(new ProgressRunnable(progress, service));
                     }
                 }
-               downloadFile(activity.getApplicationContext(), new MyProgressCallback());
+               downloadFile(activity.getApplicationContext(), new MyProgressCallback(this));
                 state = DownloadState.DONE;
+                Handler handler = new Handler(Looper.getMainLooper());
+                handler.post(new ProgressRunnable(100, this));
             } catch (Exception e) {
                 state = DownloadState.ERROR;
             } finally {
