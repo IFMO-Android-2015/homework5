@@ -12,6 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
 
+        <receiver android:name=".InitSplashActivity$UpdatesReceiver">
+            <intent-filter>
+                <action android:name="reportProgress"/>
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".DownloadService">
+
+        </service>
+
         <activity android:name=".InitSplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
