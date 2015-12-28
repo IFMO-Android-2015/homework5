@@ -12,7 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
 
-        <service android:name=".DownloadService" />
         <activity android:name=".InitSplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
