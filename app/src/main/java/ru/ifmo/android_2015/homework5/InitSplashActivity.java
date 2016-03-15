@@ -1,7 +1,14 @@
 package ru.ifmo.android_2015.homework5;
 
 import android.app.Activity;
+<<<<<<< HEAD
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+=======
+import android.content.Context;
+>>>>>>> e7f6957552304d58e82ee160eff70f5c12bcab4f
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,8 +34,13 @@ public class InitSplashActivity extends Activity {
     private ProgressBar progressBarView;
     // Заголовок
     private TextView titleTextView;
+<<<<<<< HEAD
+    private DownloadState downloadState;
+    private  BroadcastReceiver broadcastReceiver;
+=======
     // Выполняющийся таск загрузки файла
     private DownloadFileTask downloadTask;
+>>>>>>> e7f6957552304d58e82ee160eff70f5c12bcab4f
 
     @Override
     @SuppressWarnings("deprecation")
@@ -42,6 +54,50 @@ public class InitSplashActivity extends Activity {
 
         progressBarView.setMax(100);
 
+<<<<<<< HEAD
+        if (savedInstanceState == null) {
+            Log.d(TAG, "startService");
+            downloadState = DownloadState.DOWNLOADING;
+            Intent intent = new Intent(this, DownloadService.class);
+            startService(intent);
+        }
+
+        if (downloadState != DownloadState.ERROR && downloadState != DownloadState.DONE) {
+            broadcastReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    downloadState = (DownloadState) intent.getSerializableExtra("downloadState");
+                    int progress = intent.getIntExtra("progress", 0);
+                    //Log.d(TAG, downloadState.titleResId + " ");
+                    if (downloadState == DownloadState.DONE || downloadState == DownloadState.ERROR) {
+                        unregisterReceiver(broadcastReceiver);
+                    }
+                    updateView(downloadState, progress);
+                }
+            };
+            registerReceiver(broadcastReceiver, new IntentFilter("HomeworkDownloadService"));
+
+        }
+    }
+
+    void updateView(DownloadState state, int progress) {
+        titleTextView.setText(state.titleResId);
+        progressBarView.setProgress(progress);
+    }
+
+
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("downloadState", downloadState);
+        outState.putInt("progress", progressBarView.getProgress());
+    }
+
+
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        downloadState = (DownloadState) savedInstanceState.getSerializable("downloadState");
+        updateView(downloadState, savedInstanceState.getInt("progress"));
+=======
         if (savedInstanceState != null) {
             // Пытаемся получить ранее запущенный таск
             downloadTask = (DownloadFileTask) getLastNonConfigurationInstance();
@@ -63,6 +119,7 @@ public class InitSplashActivity extends Activity {
         // Activity уничтожается. Объект, который мы вернем, не будет уничтожен,
         // и его можно будет использовать в новом объекте Activity
         return downloadTask;
+>>>>>>> e7f6957552304d58e82ee160eff70f5c12bcab4f
     }
 
     /**
@@ -74,13 +131,29 @@ public class InitSplashActivity extends Activity {
         ERROR(R.string.error);
 
         // ID строкового ресурса для заголовка окна прогресса
+<<<<<<< HEAD
+         int titleResId;
+=======
         final int titleResId;
+>>>>>>> e7f6957552304d58e82ee160eff70f5c12bcab4f
 
         DownloadState(int titleResId) {
             this.titleResId = titleResId;
         }
     }
 
+<<<<<<< HEAD
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Если все готово(тогда мы отписались от receiver), а мы вертим экран,
+        // то нам бы не хотелось падать отписываясь от receiver
+        try {
+            unregisterReceiver(broadcastReceiver);
+        } catch (IllegalArgumentException e) {
+
+=======
     /**
      * Таск, выполняющий скачивание файла в фоновом потоке.
      */
@@ -175,6 +248,7 @@ public class InitSplashActivity extends Activity {
                 progress = 100;
             }
             updateView();
+>>>>>>> e7f6957552304d58e82ee160eff70f5c12bcab4f
         }
     }
 

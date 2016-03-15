@@ -18,6 +18,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
+        <service android:name=".DownloadService" />
+=======
+>>>>>>> e7f6957552304d58e82ee160eff70f5c12bcab4f
     </application>
 
 </manifest>
